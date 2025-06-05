@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petco Adoption</title>
+    <link rel="stylesheet" href="styles/adoptPage.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body class="abody">
+    <div class="nav">
+        <div class="logo-container">
+            <a href='homePage.html'>  <img src="images/logo.png" alt="Logo" class="logo"> </a>
+        </div>
+        <a class="text" href="homePage.html">Home</a>
+        <div class="dropdown">
+            <a class="active dropdown-toggle" href="adoptPage.html">Adopt</a>
+            <div class="dropdown-menu">
+                <a href="cats.html">Cats</a>
+                <a href="dogs.html">Dogs</a>
+            </div>
+        </div>    
+        <a class="text" href="petGuide1.html" >Pet Guide</a>
+        <a class="text" href="donations.html">Donate</a>
+        <div id="login">
+            <a href="login.html">
+                <img id='loginicon' src="images/profile.png">
+            </a>
+            <a class="text" href="login.html">Login/Signup
+            </a>
+        </div>
+    </div>
+
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-left">
+          <div class="star" aria-label="decorative star" style="font-size:52px;">&#10022;</div>
+          <h1>Want to find out<br> which companion<br> suits you best?</h1><br>
+          <button class="cta">TAKE THE QUIZ NOW!</button>
+        </div>
+        <div class="hero-right">
+          <img src=images/pawhand.png>
+        </div>
+      </div>
+      <div class="tags-bar">
+        <span>ADOPT, DON'T SHOP!</span>
+      </div>
+      <!-- Products Section -->
+      
+      <div class="products-section">
+        <div class="product-card">
+          <h2>CATS</h2>
+          <img src="images/cat.jpeg">
+         
+          <button class="add-cart">EXPLORE</button>
+        </div>
+        <div class="product-card">
+          <h2>DOGS</h2>
+          <img src="images/dog.jpeg">
+    
+          <button class="add-cart">EXPLORE</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Quiz Modal -->
+<!-- Modal for the quiz -->
+<div id="quizModalQ" class="modal-q">
+    <div class="modal-content-q">
+        <span id="closeModalBtnQ" class="close-q">&times;</span>
+        <form id="quizFormQ">
+            <div class="slides-container-q">
+  
+          <!-- Repeat for 10 questions -->
+          <div class="slide-q active-q">
+            <img src="images/q1.jpeg" alt="Question 1">
+            <p>Do you enjoy outdoor activities?</p>
+            <div class="quiz-options">
+                <label>
+                    <input type="radio" name="q1" value="A" hidden>
+                    <button type="button" class="quiz-answer-btn" data-value="A" data-question="q1">Yes</button>
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="B" hidden>
+                    <button type="button" class="quiz-answer-btn" data-value="B" data-question="q1">No</button>
+                </label>
+            </div>
+        </div>
+  
+          <div class="slide-q">
+            <img src="images/q2.jpeg" alt="Question 2">
+            <p>Do you prefer quiet companionship?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q2" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q2">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q2" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q2">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q3.jpeg" alt="Question 3">
+            <p>Do you like high-energy pets?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q3" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q3">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q3" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q3">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q4.jpeg" alt="Question 4">
+            <p>Are you home often during the day?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q4" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q4">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q4" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q4">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q5.jpeg" alt="Question 5">
+            <p>Do you enjoy playing games with pets?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q5" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q5">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q5" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q5">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q6.jpeg" alt="Question 6">
+            <p>Would you rather have a pet that requires less maintenance?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q6" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q6">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q6" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q6">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q7.jpeg" alt="Question 7">
+            <p>Do you like long walks or runs?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q7" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q7">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q7" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q7">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q8.jpeg" alt="Question 8">
+            <p>Would you mind if a pet needed more space?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q8" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q8">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q8" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q8">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q9.jpeg" alt="Question 9">
+            <p>Do you want a pet that can entertain itself?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q9" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q9">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q9" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q9">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <div class="slide-q">
+            <img src="images/q10.jpeg" alt="Question 10">
+            <p>Are you looking for a cuddle buddy?</p>
+            <div class="quiz-options">
+              <label>
+                <input type="radio" name="q10" value="A" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="A" data-question="q10">Yes</button>
+              </label>
+              <label>
+                <input type="radio" name="q10" value="B" hidden>
+                <button type="button" class="quiz-answer-btn" data-value="B" data-question="q10">No</button>
+              </label>
+            </div>
+          </div>
+  
+          <!-- Result Slide -->
+          <div class="slide-q" id="resultSlideQ">
+              <div class="result-wrapper-q">
+                <div id="resultQ" class="result-text-q"></div>
+                <div id="resultImageQ" class="result-img-q"></div>
+              </div>
+          </div>      
+      </form>
+    </div>
+  </div>
+  </div>
+  
+
+
+   
+    <button id="darkModeToggle">🌙</button>
+
+<script src="scripts/adoptpage.js"></script>
+
+</body>
+<footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <a href="petGuide1.html" class="ftr"><h4>Your Guide</h4></a>
+        <p>Information about all breeds</p>
+        <p>Training & boarding Places</p>
+        <p>Pet Supplies</p>
+      </div>
+      <div class="footer-column">
+        <a href="homePage.html" class="ftr"><h4>Home</h4></a>
+        <p>News</p>
+        <p>About us</p>
+        <p>Events</p>
+      </div>
+      <div class="footer-column">
+        <a href="adoptPage.html" class="ftr"><h4>Adopt</h4></a>
+        <p>Quiz</p>
+        <p>Dog Section</p>
+        <p>Cat Section</p>
+      </div>
+      <div class="footer-column">
+        <a href="donations.html" class="ftr"><h4>Donate</h4></a>
+        <p>Payment Plans/Package</p>
+        <p>Donate</p>
+      </div>
+      <div class="footer-logo">
+        <img src="images/favicon.ico" alt="Petco Logo" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <div class="footer-links">
+        <a href="#">Terms of Service</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</html>
