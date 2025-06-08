@@ -165,299 +165,147 @@ const cats = [
 ];
 
 const dogs = [
-  {
-  name: "Smokey",
-  age: "1 Year",
-  breed: "Labrador",
-  gender: "Male",
-  neutered: "No",
-  location: "Cairo",
-  image: "images/smokey.jpeg"
-  },
-  {
-    name: "Astro",
-    age: "1 Year",
-    breed: "German Shepherd",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/astro.jpeg"
-  },
-  {
-    name: "Brownie",
-    age: "4 Months",
-    breed: "Dachshund",
-    gender: "Male",
-    neutered: "No",
-    location: "Alexandria",
-    image: "images/brownie.jpeg"
-  },
-  {
-    name: "Buddy",
-    age: "3 Years",
-    breed: "Griffon",
-    gender: "Male",
-    neutered: "Yes",
-    location: "Alexandria",
-    image: "images/buddy.jpg"
-  },
-  {
-    name: "Fosdo'a",
-    age: "4 Years",
-    breed: "Balady",
-    gender: "Female",
-    neutered: "No",
-    location: "Giza",
-    image: "images/fosdo2a.jpeg"
-  },
-  {
-    name: "Max",
-    age: "1 Year",
-    breed: "Golden Retriever",
-    gender: "Male",
-    neutered: "No",
-    location: "Giza",
-    image: "images/Max.jpeg"
-  },
-  {
-    name: "Oreo",
-    age: "4 1/2 Years",
-    breed: "Cocker Spaniel",
-    gender: "Male",
-    neutered: "No",
-    location: "Port Said",
-    image: "images/oreo.png"
-  },
-  {
-    name: "Reeses",
-    age: "5 Months",
-    breed: "Rottweiler",
-    gender: "Male",
-    neutered: "No",
-    location: "Port Said",
-    image: "images/reeses.jpeg"
-  },
-  {
-    name: "Steve",
-    age: "3 Years",
-    breed: "Corgi",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/steve.jpeg"
-  },
-  {
-    name: "Zaatar",
-    age: "9 Months",
-    breed: "Golden Retriever",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/Zaatar.jpeg"
-  },
-  {
-    name: "Milo",
-    age: "3 Years",
-    breed: "Volpino",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/milo.jpeg"
-  },
-  {
-    name: "Bruce",
-    age: "3 Years",
-    breed: "Pitbull",
-    gender: "Male",
-    neutered: "No",
-    location: "Ismailia",
-    image: "images/bruce.jpeg"
-  },
-  {
-    name: "Bruno",
-    age: "1 Year",
-    breed: "German Shepherd",
-    gender: "Male",
-    neutered: "No",
-    location: "Giza",
-    image: "images/bruno.jpeg"
-  },
-  {
-    name: "Casper",
-    age: "2 Years",
-    breed: "Volpino",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/casper.jpeg"
-  },
-  {
-    name: "Daisy",
-    age: "7 Months",
-    breed: "Cocker Spaniel",
-    gender: "Female",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/daisy.jpeg"
-  },
-  {
-    name: "Zoro",
-    age: "5 Months",
-    breed: "Cocker Spaniel",
-    gender: "Male",
-    neutered: "No",
-    location: "Cairo",
-    image: "images/zoro.jpeg"
-  },
-];
-
-
-const pageType = document.body.dataset.page;
-const pets = pageType === "dogs" ? dogs : cats;
-
-
+ 
+// Get page type (should be "cats" or "dogs" from <body data-page="cats">)
+const pageType = document.body.dataset.page; 
 const container = document.getElementById("petAccordion");
 const form = document.getElementById("filter-form");
 
+// Helper: turn filter form into query params
+function buildQueryParams() {
+  const gender = document.getElementById("gender").value;
+  const age = document.getElementById("age").value;
+  const ageUnit = document.getElementById("age-unit").value;
+  const breed = document.getElementById("breed").value;
+  const neutered = document.getElementById("neutered").value;
+  const location = document.getElementById("location").value;
+  const type = (pageType === "dogs") ? "dog" : "cat";
 
+  // Build params
+  const params = new URLSearchParams();
+  params.append("type", type);
+  if (gender) params.append("gender", gender);
+  if (age) params.append("age", age);
+  if (ageUnit) params.append("ageUnit", ageUnit);
+  if (breed) params.append("breed", breed);
+  if (neutered) params.append("neutered", neutered);
+  if (location) params.append("location", location);
+  return params;
+}
+
+// Fetch pets from backend API
+async function fetchPets(queryParams = null) {
+  let url = "http://localhost:5000/api/pets";
+  if (queryParams) {
+    url += "?" + queryParams.toString();
+  } else {
+    url += "?type=" + ((pageType === "dogs") ? "dog" : "cat");
+  }
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch pets from server");
+    const pets = await res.json();
+    return pets;
+  } catch (error) {
+    container.innerHTML = `<p style="padding: 20px;">Error loading pets: ${error.message}</p>`;
+    return [];
+  }
+}
+
+// Render pets (accordion-style panels)
 function renderPets(petList) {
-  container.innerHTML = ""; // Clear previous listings
-
-  if (petList.length === 0) {
+  container.innerHTML = ""; // Clear previous
+  if (!petList.length) {
     container.innerHTML = `<p style="padding: 20px;">No pets match your filters.</p>`;
     return;
   }
-
-  petList.forEach(pet => {
+  petList.forEach((pet) => {
     const panel = document.createElement("div");
     panel.className = "panel";
     panel.style.backgroundImage = `url(${pet.image})`;
-
     panel.innerHTML = `
       <div class="info">
         <strong>${pet.name}</strong><br>
         ${pet.age} • ${pet.breed} • ${pet.gender}
       </div>
     `;
-
     panel.addEventListener("click", () => {
       showModal(pet);
     });
-
     container.appendChild(panel);
   });
 }
 
-function filterPets(e) {
-  e.preventDefault();
-
-  const gender = document.getElementById("gender").value.toLowerCase();
-  const age = document.getElementById("age").value; // Example: "2 years" or "6 months"
-  const breed = document.getElementById("breed").value.toLowerCase();
-  const neutered = document.getElementById("neutered").value.toLowerCase();
-  const location = document.getElementById("location").value.toLowerCase();
-
-  let ageValue = null;
-  let ageUnit = null;
-
-  // Parse age and unit from input, if provided
-  if (age) {
-    const match = age.match(/^(\d+)\s*(years?|months?)$/i);
-    if (match) {
-      ageValue = parseInt(match[1]);
-      ageUnit = match[2].toLowerCase();
-    }
-  }
-
-  const filtered = pets.filter(pet => {
-    let petAgeInMonths = 0;
-
-    // Convert pet's age to months
-    if (pet.age.toLowerCase().includes("year")) {
-      petAgeInMonths = parseInt(pet.age) * 12;
-    } else if (pet.age.toLowerCase().includes("month")) {
-      petAgeInMonths = parseInt(pet.age);
-    }
-
-    // Convert filter age to months
-    const filterAgeInMonths = ageValue
-      ? ageUnit.startsWith("year")
-        ? ageValue * 12
-        : ageValue
-      : null;
-
-    // Apply filters
-    return (
-      (!gender || pet.gender.toLowerCase() === gender) &&
-      (!filterAgeInMonths || petAgeInMonths === filterAgeInMonths) && // Exact match for age
-      (!breed || pet.breed.toLowerCase() === breed) &&
-      (!neutered || pet.neutered.toLowerCase() === neutered) &&
-      (!location || pet.location.toLowerCase() === location)
-    );
-  });
-
-  renderPets(filtered);
+// Filter pets using form (calls backend with filters)
+async function handleFilter(event) {
+  event.preventDefault();
+  const queryParams = buildQueryParams();
+  const pets = await fetchPets(queryParams);
+  renderPets(pets);
 }
 
-// Attach the filter function to the form submission
-form.addEventListener("submit", filterPets);
+// On page load: fetch all pets for this type
+document.addEventListener("DOMContentLoaded", async () => {
+  const pets = await fetchPets();
+  renderPets(pets);
+});
+
+// Attach filter form event
+form.addEventListener("submit", handleFilter);
+
 // Dark Mode
 document.getElementById("darkModeToggle").addEventListener("click", function () {
   document.body.classList.toggle("dark-mode");
 });
 
-// Alternate filter form logic
-document.getElementById("filter-form").addEventListener("submit", function (event) {
-  event.preventDefault();
+// Alternate filter form logic (if used)
+const altForm = document.getElementById("filter-form");
+if(altForm) {
+  altForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const gender = document.getElementById("gender").value.toLowerCase();
-  const age = document.getElementById("age").value; // Example: "2"
-  const ageUnit = document.getElementById("age-unit").value; // Example: "years" or "months"
-  const breed = document.getElementById("breed").value.toLowerCase();
-  const neutered = document.getElementById("neutered").value.toLowerCase();
-  const location = document.getElementById("location").value.toLowerCase();
+    const gender = document.getElementById("gender").value.toLowerCase();
+    const age = document.getElementById("age").value;
+    const ageUnitElem = document.getElementById("age-unit");
+    const ageUnit = ageUnitElem ? ageUnitElem.value : "";
+    const breed = document.getElementById("breed").value.toLowerCase();
+    const neutered = document.getElementById("neutered").value.toLowerCase();
+    const location = document.getElementById("location").value.toLowerCase();
 
-  console.log("Filter Inputs =>", { gender, age, ageUnit, breed, neutered, location });
+    let ageValue = null;
+    if (age) {
+        ageValue = parseInt(age);
+    }
 
-  let ageValue = null;
-  if (age) {
-      ageValue = parseInt(age);
-      console.log("Parsed Age Value:", ageValue);
-  }
+    const filteredPets = pets.filter((pet) => {
+        const matchGender = !gender || pet.gender.toLowerCase() === gender;
+        const matchBreed = !breed || pet.breed.toLowerCase() === breed;
+        const matchNeutered = !neutered || pet.neutered.toLowerCase() === neutered;
+        const matchLocation = !location || pet.location.toLowerCase() === location;
 
-  const filteredPets = pets.filter((pet) => {
-      const matchGender = !gender || pet.gender.toLowerCase() === gender;
-      const matchBreed = !breed || pet.breed.toLowerCase() === breed;
-      const matchNeutered = !neutered || pet.neutered.toLowerCase() === neutered;
-      const matchLocation = !location || pet.location.toLowerCase() === location;
+        let petAgeInMonths = 0;
+        if (pet.age.toLowerCase().includes("year")) {
+            petAgeInMonths = parseInt(pet.age) * 12;
+        } else if (pet.age.toLowerCase().includes("month")) {
+            petAgeInMonths = parseInt(pet.age);
+        }
 
-      // Convert pet's age to months for comparison
-      let petAgeInMonths = 0;
-      if (pet.age.toLowerCase().includes("year")) {
-          petAgeInMonths = parseInt(pet.age) * 12;
-      } else if (pet.age.toLowerCase().includes("month")) {
-          petAgeInMonths = parseInt(pet.age);
-      }
-      console.log("Pet Age String:", pet.age, "Pet Age in Months:", petAgeInMonths);
+        const filterAgeInMonths = ageValue
+            ? ageUnit === "years"
+                ? ageValue * 12
+                : ageValue
+            : null;
 
-      // Convert filter age to months for comparison
-      const filterAgeInMonths = ageValue
-          ? ageUnit === "years"
-              ? ageValue * 12
-              : ageValue
-          : null;
+        const matchAge = !filterAgeInMonths || petAgeInMonths === filterAgeInMonths;
 
-      console.log("Filter Age in Months:", filterAgeInMonths);
+        return matchGender && matchBreed && matchNeutered && matchAge && matchLocation;
+    });
 
-      const matchAge = !filterAgeInMonths || petAgeInMonths === filterAgeInMonths;
-
-      return matchGender && matchBreed && matchNeutered && matchAge && matchLocation;
+    renderFilteredPets(filteredPets);
   });
+}
 
-  console.log("Filtered Pets:", filteredPets);
-  renderFilteredPets(filteredPets);
-});
-document.addEventListener("DOMContentLoaded", function () {
+// Render filtered pets to container (if used)
 function renderFilteredPets(filteredPets) {
   const container = document.getElementById("petListingsContainer");
   if (!container) return;
@@ -495,10 +343,13 @@ function renderFilteredPets(filteredPets) {
     container.appendChild(petCard);
   });
 }
-});
+
+// Modal for showing pet details
 function showModal(pet) {
   const modal = document.getElementById("petModal");
   const modalBody = document.getElementById("modalBody");
+
+  if (!modal || !modalBody) return;
 
   modalBody.innerHTML = `
     <h3>${pet.name}</h3>
@@ -519,6 +370,7 @@ function showModal(pet) {
   });
 }
 
+// Close modal logic for pet modal
 document.addEventListener("DOMContentLoaded", function () {
   const closePetModalBtn = document.getElementById("pclose");
   const petModal = document.getElementById("petModal");
@@ -536,15 +388,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
+// Adoption form modal logic
 function openAdoptionForm() {
   const modal = document.getElementById("adoption-form");
-  modal.style.display = "block";
+  if (modal) modal.style.display = "block";
 }
 
 function closeAdoptionForm() {
   const modal = document.getElementById("adoption-form");
-  modal.style.display = "none";
+  if (modal) modal.style.display = "none";
 }
 
 window.onclick = function (event) {
@@ -631,6 +483,7 @@ function createQuizSlides() {
     slide.setAttribute('data-slide', i);
 
     slide.innerHTML = `
+    <h2 style="margin-bottom= 20px;">Companion Quiz</h2>
       <img src="${q.img}" alt="Quiz Image ${i+1}">
       <div class="quiz-question">${q.question}</div>
       <div class="quiz-answer-btns">
@@ -705,15 +558,15 @@ function showQuizResult() {
   let resultText = '', resultImg = '', resultSub = '';
   if (catScore > dogScore) {
     resultText = "You're best suited to adopt a <b>cat</b>!";
-    resultImg = "images/cat_result.jpg";
+    resultImg = "images/rcat.jpeg";
     resultSub = "You enjoy quiet, independent, and low-maintenance companions.";
   } else if (dogScore > catScore) {
     resultText = "You're best suited to adopt a <b>dog</b>!";
-    resultImg = "images/dog_result.jpg";
+    resultImg = "images/rdog.jpeg";
     resultSub = "You love playful, energetic, and loyal friends!";
   } else {
     resultText = "You're great with <b>both cats and dogs</b>!";
-    resultImg = "images/both_result.jpg";
+    resultImg = "images/rboth.jpeg";
     resultSub = "You have the perfect balance to care for either!";
   }
 
@@ -725,24 +578,45 @@ function showQuizResult() {
   `;
 }
 
+// Quiz modal open/close logic
 document.addEventListener('DOMContentLoaded', function() {
-document.getElementById('openQuizBtn').addEventListener('click', function() {
-  // reset and create slides
-  userAnswers = [];
-  currentSlide = 0;
-  createQuizSlides();
-  showQuizSlide(0);
-  document.getElementById('quizModalQ').classList.add('show');
-  document.body.style.overflow = 'hidden';
-});
-document.getElementById('closeQuizModal').addEventListener('click', function() {
-  document.getElementById('quizModalQ').classList.remove('show');
-  document.body.style.overflow = '';
+  // Quiz modal open
+  const openQuizBtn = document.getElementById('openQuizBtn');
+  if (openQuizBtn) {
+    openQuizBtn.addEventListener('click', function() {
+      userAnswers = [];
+      currentSlide = 0;
+      createQuizSlides();
+      showQuizSlide(0);
+      document.getElementById('quizModalQ').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  // Quiz modal close
+  const closeQuizModal = document.getElementById('closeQuizModal');
+  if (closeQuizModal) {
+    closeQuizModal.addEventListener('click', function() {
+      document.getElementById('quizModalQ').classList.remove('show');
+      document.body.style.overflow = '';
+    });
+  }
+  // Slide answer delegation
+  const quizSlidesContainer = document.getElementById('quizSlidesContainer');
+  if (quizSlidesContainer) {
+    quizSlidesContainer.addEventListener('click', handleQuizAnswer);
+  }
+  // Dismiss quiz modal on outside click
+  const quizModalQ = document.getElementById('quizModalQ');
+  if (quizModalQ) {
+    quizModalQ.addEventListener('mousedown', function(e) {
+      if (e.target === quizModalQ) {
+        quizModalQ.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 });
 
-// Slide answer click handling (event delegation)
-document.getElementById('quizSlidesContainer').addEventListener('click', handleQuizAnswer);
-});
 // Restart quiz from result slide
 function restartQuiz() {
   userAnswers = [];
@@ -750,12 +624,34 @@ function restartQuiz() {
   createQuizSlides();
   showQuizSlide(0);
 }
+
+// --- REHOME PET MODAL CODE ---
 document.addEventListener('DOMContentLoaded', function() {
-// Dismiss modal on outside click
-document.getElementById('quizModalQ').addEventListener('mousedown', function(e) {
-  if (e.target === this) {
-    this.classList.remove('show');
-    document.body.style.overflow = '';
+  // Open Rehome Modal
+  const openRehomeBtn = document.getElementById('openRehomeBtn');
+  const rehomeModal = document.getElementById('rehomePetModal');
+  const closeRehomeModal = document.getElementById('closeRehomeModal');
+
+  if (openRehomeBtn && rehomeModal) {
+    openRehomeBtn.addEventListener('click', function() {
+      rehomeModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (closeRehomeModal && rehomeModal) {
+    closeRehomeModal.addEventListener('click', function() {
+      rehomeModal.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+  }
+  // Dismiss modal on outside click
+  if (rehomeModal) {
+    rehomeModal.addEventListener('mousedown', function(e) {
+      if (e.target === rehomeModal) {
+        rehomeModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
   }
 });
-});
+];
