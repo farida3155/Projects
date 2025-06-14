@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adoption Requests</title>
+  <link rel="stylesheet" href="/admin/styles/adoptionrequests.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="side-nav">
+      <div class="user">
+        <img src="/images/user.png" class="user-img" />
+        <div>
+          <h2>Youliana</h2>
+          <p>youliana@gmail.com</p>
+        </div>
+      </div>
+      <ul>
+        <li><img src="/images/dashboard.png"><a href="/admin/AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="/admin/ManagePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="/admin/AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="/admin/PostReq.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="/admin/AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="#"><p>Donation Form</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="/admin/ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="#"><p>Insights</p></a></li>
+       </ul>
+    </div>
+  </div>
+
+  <div class="main-dashboard">
+    <div class="dashboard-navbar">
+      <img src="/images/logo1.png" alt="Petco Logo" class="dashboard-logo" />
+      <h1>Adoption Requests</h1>
+    </div>
+    <hr />
+
+    <div class="adoption-requests-container" id="adoptionRequestsContainer">
+      <!-- Requests inserted dynamically -->
+    </div>
+  </div>
+<div class="modal" id="adoptionModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAdoptionModal()">&times;</span>
+    <div id="adoptionDetails"></div>
+    <div class="modal-buttons">
+      <button onclick="acceptRequest()">Accept</button>
+      <button onclick="rejectRequest()">Reject</button>
+    </div>
+  </div>
+</div>
+
+  
+  <script src="/admin/scripts/adoptionrequests.js"></script>
+</body>
+</html>
