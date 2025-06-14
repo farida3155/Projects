@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Events Management</title>
+  <link rel="stylesheet" href="/styles/eventadmin.css">
+</head>
+<body>
+  <div class="header">
+    <div class="side-nav">
+      <div class="user">
+        <img src="/images/user.png" class="user-img" alt="User">
+        <div>
+          <h2>Youliana</h2>
+          <p>youliana@gmail.com</p>
+        </div>
+      </div>
+      <ul>
+        <li><img src="/images/dashboard.png"><p>Dashboard</p></li>
+        <li><img src="/images/pawprint.png"><p>Manage Pets</p></li>
+        <li><img src="/images/quote-request.png"><p>Adoption Requests</p></li>
+        <li><img src="/images/projects.png"><p>Post Request</p></li>
+        <li><img src="/images/history.png"><p>Adoption History</p></li>
+        <li><img src="/images/document.png"><p>Donation Form</p></li>
+        <li><img src="/images/phone-chat.png"><p>Contact Us</p></li>
+        <li><img src="/images/reports.png"><p>Insights</p></li>
+        <li>
+          <a href="/views/adminevents.html">
+            <img src="/images/download__2_-removebg-preview.png.png" alt="events icon">
+            <p>Events</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-dashboard">
+      <div class="dashboard-navbar">
+        <img src="/images/logo1.png" alt="Petco Logo" class="dashboard-logo"/>
+        <h1>Admin Events Management</h1>
+      </div>
+      <hr>
+      <div id="event-controls-container">
+        <div id="event-controls">
+          <button id="add-event-btn">Add Event</button>
+          <button id="delete-event-btn">Delete Selected Event</button>
+        </div>
+      </div>
+      <div id="event-list"></div>
+      <form id="add-event-form" style="display:none;">
+        <h2>Add New Event</h2>
+        <input type="text" id="event-title" placeholder="Event Title" required>
+        <input type="text" id="event-date" placeholder="Date (e.g. 2025-11-03)" required>
+        <input type="text" id="event-month" placeholder="Month (e.g. November)" required>
+        <input type="text" id="event-time" placeholder="Time (e.g. 10AM – 1PM)" required>
+        <input type="text" id="event-img" placeholder="Image URL" required>
+        <textarea id="event-desc" placeholder="Event Description" required></textarea>
+        <button type="submit">Add Event</button>
+        <button type="button" id="cancel-add-event">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <script src="/scripts/adminevents.js"></script>
+</body>
+</html>
