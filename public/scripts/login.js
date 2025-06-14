@@ -1,11 +1,12 @@
-const loginForm = document.querySelector(".login-form");
-const signupForm = document.querySelector(".signup-form");
+// Form switching & modal code (your existing logic)
+const loginForm = document.getElementById("loginForm");
+const signupForm = document.getElementById("signupForm");
 const wrapper = document.querySelector(".wrapper");
 const loginTitle = document.querySelector(".title-login");
 const signupTitle = document.querySelector(".title-signup");
 
+// Form switching functions (keep your original)
 function loginFunction() {
-    // Make login form active and signup form inactive
     loginForm.classList.add("active");
     signupForm.classList.remove("active");
     loginForm.style.left = "50%";
@@ -18,7 +19,6 @@ function loginFunction() {
 }
 
 function registerFunction() {
-    // Make signup form active and login form inactive
     loginForm.classList.remove("active");
     signupForm.classList.add("active");
     loginForm.style.left = "-50%";
@@ -30,35 +30,78 @@ function registerFunction() {
     signupTitle.style.opacity = 1;
 }
 
-function admin() {
-    if (document.getElementById("sign-pass").value == "1234") {
-        window.location.href = "donations.html";
-    }
-}
+// Modal logic (keep your original)
 const modal = document.getElementById("termsModal");
 const openModalLink = document.getElementById("openModalLink");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const closeModalFooterBtn = document.getElementById("closeModalFooterBtn");
 
-// Open modal when clicking the "terms and conditions" link
 openModalLink.addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    modal.style.display = "block"; // Show modal
+    event.preventDefault();
+    modal.style.display = "block";
 });
-
-// Close modal when clicking the close button (X)
 closeModalBtn.addEventListener("click", function() {
     modal.style.display = "none";
 });
-
-// Close modal when clicking the footer close button
 closeModalFooterBtn.addEventListener("click", function() {
     modal.style.display = "none";
 });
-
-// Close modal when clicking outside the modal content
 window.addEventListener("click", function(event) {
     if (event.target === modal) {
         modal.style.display = "none";
+    }
+});
+
+// --- Authentication Logic ---
+
+// LOGIN FORM SUBMIT HANDLER
+loginForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('log-email').value.trim();
+    const password = document.getElementById('log-pass').value.trim();
+
+    if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+    }
+
+    const res = await fetch("/api/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    alert(data.message);
+    if (data.status === "Success") {
+        window.location.href = "../views/homePage.html"; 
+    }
+});
+
+// SIGNUP FORM SUBMIT HANDLER
+signupForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('sign-email').value.trim();
+    const password = document.getElementById('sign-pass').value.trim();
+    const confirmPassword = document.getElementById('sign-confirmpass').value.trim();
+    const agree = document.getElementById('agree').checked;
+
+    if (!email || !password || !confirmPassword) {
+        alert("Please fill all the fields.");
+        return;
+    }
+    if (!agree) {
+        alert("You must agree to the Terms & Conditions.");
+        return;
+    }
+
+    const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, confirmPassword })
+    });
+    const data = await res.json();
+    alert(data.message);
+    if (data.status === "Success") {
+        window.location.href = "../views/homePage.html";
     }
 });
