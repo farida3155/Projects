@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations</title>
+<link rel="stylesheet" href="../public/styles/donations.css">
+<script src="../public/scripts/donations.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo-container">
+            <a href='homePage.html'>  <img src="../public/images/logo.png" alt="Logo" class="logo"> </a>
+        </div>
+        <a class="text" href="homePage.html">Home</a>
+        <div class="dropdown">
+            <a class="active dropdown-toggle" href="adoptPage.html">Adopt</a>
+            <div class="dropdown-menu">
+                <a href="cats.html">Cats</a>
+                <a href="dogs.html">Dogs</a>
+            </div>
+        </div>    
+        <a class="text" href="petGuide1.html" >Pet Guide</a>
+        <a class="text" href="donations.html">Donate</a>
+        <div id="login">
+            <a href="login.html">
+                <img id='loginicon' src="../public/images/profile.png">
+            </a>
+            <a class="text" href="login.html">Login/Signup
+            </a>
+        </div>
+    </div>
+    <div class="packages-wrapper">
+        <h1>Donation packages</h1>
+        <img src="../public/images/packages.jpg">
+    <div class="packages">
+        <div class="pbox">
+            <div class="boxprice">
+                500 L.E. <br> per month
+            </div>
+        </div>
+
+        <div class="pbox">
+            <div class="boxprice">
+                70 L.E. <br> per week
+            </div>
+        </div>
+
+        <div class="pbox">
+            <div class="boxprice">
+                sponsor a surgery every 2 months(3000 L.E. - 4000 L.E.)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="donationwrapper">
+    <form action="#">
+        <div class="input">
+            <label for="fn">First Name</label>
+            <input type="text" id="fn" placeholder="Enter your first name">
+        </div>
+        <div class="input">
+            <label for="ln">Last Name</label>
+            <input type="text" id="ln" placeholder="Enter your last name">
+        </div>
+        <div class="input">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        <div class="input">
+            <label for="cardnum">Card No.</label>
+            <input type="text" id="cardnum" placeholder="0000 0000 0000 0000">
+        </div>
+        <div class="input">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="000">
+        </div>
+        <div class="input">
+            <label for="pack">Package</label>
+            <select name="package" id="pack">
+                <option value="" disabled selected>Select a package</option>
+                <option value="p1">package 1</option>
+                <option value="p2">package 2</option>
+                <option value="p3">package 3</option>
+            </select>
+            <span>optional</span>
+        </div>
+        <div class="input">
+            <label for="random">Donate now</label>
+            <input type="text" id="random" placeholder="Any amount (L.E.)">
+            <span>optional</span>
+        </div>
+        <div class="input">
+            <button onsubmit="admin()" type="submit" class="submit-btn">Donate</button>
+        </div>
+    </form>
+    <div class="instapay">
+        <img src="../public/images/unnamed.png" >
+        <div class="instanumbers">
+            01211158953 <br>
+            01003456712
+        </div>
+    </div>
+</div>
+<div class="extras">
+    <img id="_1" src="../public/images/extra1.png">
+    <img src="../public/images/extra2.png" id="_2">
+</div>
+</body>
+<footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <a href="petGuide1.html" class="ftr"><h4>Your Guide</h4></a>
+        <p>Information about all breeds</p>
+        <p>Training & boarding Places</p>
+        <p>Pet Supplies</p>
+      </div>
+      <div class="footer-column">
+        <a href="homePage.html" class="ftr"><h4>Home</h4></a>
+        <p>News</p>
+        <p>About us</p>
+        <p>Events</p>
+      </div>
+      <div class="footer-column">
+        <a href="adoptPage.html" class="ftr"><h4>Adopt</h4></a>
+        <p>Quiz</p>
+        <p>Dog Section</p>
+        <p>Cat Section</p>
+      </div>
+      <div class="footer-column">
+        <a href="donations.html" class="ftr"><h4>Donate</h4></a>
+        <p>Payment Plans/Package</p>
+        <p>Donate</p>
+      </div>
+      <div class="footer-logo">
+        <img src="../public/images/favicon.ico" alt="Petco Logo" />
+      </div>
+    </div>
+  
+  </footer>
+</html>
