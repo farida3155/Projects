@@ -1,0 +1,110 @@
+@font-face {
+    font-family: Quicksand;
+    src: url("../../My Fonts/static/Quicksand-Bold.ttf");
+}
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    font-family: Quicksand, sans-serif;
+    background-color: #e4deef;
+    text-align: center;
+    padding-top:60px;
+    background-image: url('../../images/Background1.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-blend-mode:soft-light;
+
+  
+  /* margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f6f0fc url('images/Background1.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; */
+}
+
+.login-container {
+  text-align: center;
+}
+
+.logo {
+  width: 240px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #737373;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* .login-box {
+  background: #fff1dc;
+  padding: 30px 20px;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display:inline-block;
+}
+
+.login-box input {
+  width: 240px;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+} */
+
+.login-box {
+  background: #fff1dc;
+  padding: 30px 20px;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* stack elements vertically */
+  align-items: center;
+  gap: 15px; /* spacing between inputs */
+  margin-top:20px;
+  margin-left:250px;
+  margin-right:250px;
+}
+
+.login-box input {
+  width: 240px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  display: block; /* ensures it's not inline */
+}
+
+
+#loginBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.paw-icon {
+  width: 50px;
+  transition: transform 0.3s  ease-in-out, filter 0.3s ease;
+  
+}
+
+
+#loginBtn:hover .paw-icon {
+  transform: scale(1.1);
+  filter: hue-rotate(80deg);
+  filter: invert(22%) sepia(22%) saturate(1450%) hue-rotate(235deg) brightness(100%) contrast(95%);
+}
+
+
