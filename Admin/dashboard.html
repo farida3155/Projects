@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="styles/dashboard.css">
+    <div class="stats-card">
+      <div class="stat-card">
+        <h2>New Boarding</h2>
+        <p id="boardingCount">...</p>
+        <span class="green">+15</span>
+
+      </div>
+      <div class="stat-card">
+        <h2>Active Users</h2>
+        <p id="activeUsers">....</p>
+        <span class="red">-90</span>
+  
+      </div>
+      <div class="stat-card">
+        <h2>Total Revenue</h2>
+        <p id="revenue">....</p>
+        <span class="green">+1000</span>
+  
+      </div>
+    </div>
+
+    <div class="graph-box" onclick="goTo('insights.html')">
+      <h3>Adoption Requests</h3>
+      <canvas id="adoptionChart"></canvas>
+    </div>
+
+
+    <div class="summary-widgets">
+      <div onclick="goTo('adoptionRequests.html')">
+        <h2 id="adoptCount">120++</h2>
+        <p>Adopt Request <br> are pending</p>
+        <a href="#">view</a>
+
+      </div>
+
+      <div onclick="goTo('managePets.html')">
+        <h2 id="petsCount">45</h2>
+        <p>Pets <br> On board</p>
+        <a href="#">view</a>
+      </div>
+    </div>
+  </div>
+
+  
+  
