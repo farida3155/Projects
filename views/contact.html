@@ -4,33 +4,34 @@
   <meta charset="UTF-8">
   <title>Get In Touch</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../public/styles/contact.css">
+  <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
     <!-- Navbar -->
-    <div class="navbar">
-        <div class="nav-left">
-          <img id="logo" src="coffee.png" alt="Petco Logo" />
+    <body>
+     <header>
+        <div class="nav">
+            <div class="logo-container">
+                <a href='homePage.html'>  <img src="Assets/images/logo1.png" alt="Logo" class="logo"> </a>
+            </div>
+            <div class="search-container">
+                <span class="icon">🔍</span>
+                <input type="text" class="search-bar" placeholder="Search...">
+            </div>
+            <a class="text" href="homePage.html" >Home</a>
+            <a class="text" href="adoptPage.html">Adopt</a>
+            <a class="active" href="petGuide1.html">Pet Guide</a>
+            <a class="text" href="donations.html">Donate</a>
+            <div id="login">
+                <a href="login.html">
+                    <img id='loginicon' src="Assets/images/profile1.png">
+                </a>
+                <a class="text" href="login.html" >Login/Signup
+                </a>
+            </div>
         </div>
-        <nav>
-                <a class="text" href="homePage.html">Home</a>
-                <div class="dropdown">
-                    <a class="active dropdown-toggle" href="adoptPage.html">Adopt</a>
-                    <div class="dropdown-menu">
-                        <a href="cats.html">Cats</a>
-                        <a href="dogs.html">Dogs</a>
-                    </div>
-                </div>    
-                <a class="text" href="petGuide1.html" >Pet Guide</a>
-                <a class="text" href="donations.html">Donate</a>
-                <div id="login">
-                    <a href="login.html">
-                        <img id='loginicon' src="../public/images/profile.png" style="height: 30px;">
-                    </a>
-                    <a class="text" href="login.html">Login/Signup
-                    </a>
-        </nav>
-      </div>
+</header>
+
   <div class="header-bg">
     <h1>Get In Touch</h1>
     <p>
@@ -89,6 +90,7 @@
       </div>
     </form>
   </div>
+  <script src="js/contact.js"></script>
 </body>
 <footer class="footer">
     <div class="footer-top">
@@ -116,7 +118,7 @@
         <p>Donate</p>
       </div>
       <div class="footer-logo">
-        <img src="images/favicon.ico" alt="Petco Logo" />
+        <img src="Assets/images/favicon.ico" alt="Petco Logo" />
       </div>
     </div>
     <div class="footer-bottom">
@@ -131,4 +133,6 @@
       </div>
     </div>
   </footer>
+
+
 </html>
