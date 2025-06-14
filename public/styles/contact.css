@@ -1,20 +1,17 @@
 @font-face {
-    font-family: 'Quicksand';
-    src: url(../fonts/Quicksand.ttf) format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
+  font-family: Quicksand-B;
+  src: url('../Assets/My Fonts/static/Quicksand-Bold.ttf');
+}
+ @font-face {
+  font-family: Lato;
+  src: url('../Assets/My Fonts/static/Lato-Black.ttf');
 }
 @font-face {
-    font-family: 'Lato';
-    src: url(../fonts/Lato-Black.ttf) format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Quicksand-B';
-    src: url(../fonts/Quicksand-Bold.ttf) format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
+  font-family: Quicksand;
+ src: url('../Assets/My Fonts/static/Quicksand-Medium.ttf'); 
+} 
+html{
+  scroll-behavior: smooth;
 }
 :root {
     --purple: #c9a4f7;
@@ -26,20 +23,136 @@
     --shadow: 0 8px 32px 0 rgba(44, 30, 60, 0.14);
     --border-radius: 18px;
   }
-  body {
+body{
     margin: 0;
-    font-family: 'Lato', sans-serif;
-    background: var(--beige);
-    color: var(--text-dark);
-    min-height: 100vh;
+    padding: 0;
+    font-family: Quicksand-B;
+    background-color: #f9efde;
+    text-align: center;
+    padding-top:60px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-blend-mode:soft-light;
+
   }
-  .header-bg {
+/* Navigation Bar */
+.nav {
+  font-family: Quicksand;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 80px 0px 30px;
+  background-color: rgba(255, 233, 204, 0.9);
+  position: fixed;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  box-shadow: 2px 5px 10px #c9a4f7;
+  font-size: 1.3em;
+  z-index: 1000;
+  gap: 0px;
+  height: 80px;
+  margin-top: -10px;
+
+}
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: inherit; /* Adjust the color as needed */
+  padding-bottom: 3px; /* Ensure there's space for the line */
+}
+.nav > a:not(.active)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect only for non-active, non-logo links */
+.nav > a:not(.active):hover::after{
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav a.active {
+  background-color: #fffaf1;
+  padding: 20px 10px;
+  border-radius: 20px;
+  height: auto;
+  text-shadow: 0.8 ease-in-out;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: left;
+}
+
+.logo {
+ width: 180px;
+ height: 50px;
+ margin-right: 200px;
+ margin-left: 35px;
+}
+
+/* Search Bar */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 10px 12px 8px 35px;
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: transparent;
+  width: 150px;
+  outline: none;
+  transition: width 0.3s;
+  font-size: 0.9em;
+}
+
+.search-bar:focus {
+  width: 250px;
+}
+
+.search-container .icon {
+  position: absolute;
+  left: 10px;
+  font-size: 18px;
+  color: black;
+  background-color: transparent;
+}
+
+#login{
+  display: inline-flex;
+  align-items: center;
+}
+#loginicon {
+  height: 35px;
+  width: 55px;
+}
+
+.container {
+  width:100%;
+
+}
+
+.header-bg {
     background: linear-gradient(135deg, var(--purple) 50%, var(--beige) 100%);
     padding: 56px 0 90px;
     border-bottom-left-radius: 64px;
     border-bottom-right-radius: 64px;
     text-align: center;
-  }
+ }
   .header-bg h1 {
     margin: 0 0 16px;
     font-size: 2.6rem;
@@ -173,11 +286,12 @@
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 3px 12px 0 rgba(124, 58, 237, 0.11);
-    transition: background 0.18s, box-shadow 0.15s;
+    transition: background 0.18s, box-shadow 0.15s,ease-in-out 0.5s;
   }
   .send-btn:hover, .send-btn:focus {
     background: linear-gradient(90deg, var(--purple-dark) 65%, var(--purple) 100%);
     box-shadow: 0 6px 20px 0 rgba(124, 58, 237, 0.18);
+    transition: ease-in-out 0.5s;
   }
   .navbar {
     background: #fcebc3;
