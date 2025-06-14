@@ -1,0 +1,373 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url(../fonts/Quicksand.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url(../fonts/Lato-Black.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Quicksand-B';
+    src: url(../fonts/Quicksand-Bold.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --purple: #c9a4f7;
+    --purple-dark:#8b50d4;
+    --beige: #f8f5f0;
+    --beige-dark: #fbecc9;
+    --text-dark: #2d2237;
+    --text-light: #fff;
+    --shadow: 0 8px 32px 0 rgba(44, 30, 60, 0.14);
+    --border-radius: 18px;
+  }
+  body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background: var(--beige);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+  .header-bg {
+    background: linear-gradient(135deg, var(--purple) 50%, var(--beige) 100%);
+    padding: 56px 0 90px;
+    border-bottom-left-radius: 64px;
+    border-bottom-right-radius: 64px;
+    text-align: center;
+  }
+  .header-bg h1 {
+    margin: 0 0 16px;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: var(--purple-dark);
+  }
+  .header-bg p {
+    margin: 0 auto;
+    max-width: 540px;
+    font-size: 1.14rem;
+    color: #5b21b6cc;
+    letter-spacing: 0.1px;
+  }
+  .contact-container {
+    max-width: 960px;
+    margin: -72px auto 0;
+    background: var(--beige-dark);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .contact-info {
+    flex: 1 1 260px;
+    background: linear-gradient(135deg, var(--purple-dark) 90%, var(--purple) 100%);
+    color: var(--text-light);
+    padding: 40px 34px 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 260px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .contact-info h2 {
+    margin-top: 0;
+    margin-bottom: 13px;
+    font-size: 1.23rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .contact-info p {
+    font-size: 1rem;
+    margin: 0 0 20px;
+    color: #d8c1ff;
+  }
+  .info-item {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+    font-size: 1rem;
+    color: #e9e0fa;
+    gap: 10px;
+    word-break: break-all;
+  }
+  .info-item svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0.85;
+  }
+  .info-circle {
+    position: absolute;
+    bottom: 20px;
+    right: 12px;
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .contact-form {
+    flex: 2 1 370px;
+    background: transparent;
+    padding: 40px 34px 36px 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 300px;
+  }
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+  .form-group {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .form-label {
+    font-size: 0.97rem;
+    margin-bottom: 4px;
+    color: var(--purple-dark);
+    font-weight: 500;
+  }
+  .form-input, .form-textarea {
+    padding: 9px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #d6c2fa;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-dark);
+    outline: none;
+    transition: border 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--purple);
+  }
+  .form-textarea {
+    min-height: 72px;
+    resize: vertical;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+  .send-btn {
+    background: linear-gradient(90deg, var(--purple) 65%, var(--purple-dark) 100%);
+    color: var(--text-light);
+    border: none;
+    font-size: 1.07rem;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px 0 rgba(124, 58, 237, 0.11);
+    transition: background 0.18s, box-shadow 0.15s;
+  }
+  .send-btn:hover, .send-btn:focus {
+    background: linear-gradient(90deg, var(--purple-dark) 65%, var(--purple) 100%);
+    box-shadow: 0 6px 20px 0 rgba(124, 58, 237, 0.18);
+  }
+  .navbar {
+    background: #fcebc3;
+    border-radius: 16px;
+    padding: 10px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 16px;
+    min-height: 72px; /* Ensures a good vertical size for the nav */
+  }
+  
+  /* Flexbox wrapper for logo and nav links for better alignment */
+  .navbar .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0; /* Remove any unwanted space */
+  }
+  
+  /* Logo Styles */
+  .navbar #logo {
+    display: block;
+    height: 30px;    /* Set a fixed, proportional height */
+    width: auto;     /* Auto width to maintain aspect ratio */
+    margin-right: 32px; /* Space between logo and nav links */
+    object-fit: contain;
+    /* Optionally, vertical-align: middle; (if inline) */
+  }
+  
+  /* Nav Links */
+  .navbar nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar nav a {
+    color: #60259c;
+    text-decoration: none;
+    margin-left: 32px;
+    font-weight: 500;
+    transition: color 0.2s;
+    font-size: 1.05em;
+    letter-spacing: 0.02em;
+  }
+  
+  .navbar nav a:first-child {
+    margin-left: 0;
+  }
+  
+  .navbar nav a:hover {
+    color: #C1738D;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 233, 204, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.dropdown .dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown .dropdown-menu a:hover {
+    background-color: #9964df;
+    color: #000000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}  
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-container {
+      flex-direction: column;
+      margin: -50px 18px 0 18px;
+    }
+    .contact-info, .contact-form {
+      padding: 32px 18px 32px 18px;
+    }
+    .header-bg {
+      padding-bottom: 66px;
+    }
+  }
+  @media (max-width: 640px) {
+    .header-bg h1 {
+      font-size: 2rem;
+    }
+    .contact-container {
+      margin: -36px 4vw 0 4vw;
+    }
+    .contact-info, .contact-form {
+      padding: 22px 7vw;
+    }
+  }
+  .footer {
+    background-color: #fffaf5;
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 100%;
+}
+.footer p {
+    text-align: center;
+    justify-content: center;
+}
+.footer-top {
+    background-color: #e8d8f1;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    flex-wrap: wrap;
+    margin-right: -20px;
+    margin-left: -20px;
+}
+  
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+    margin: 0 10px;
+}
+  
+.footer-column h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+  
+.footer-column p {
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+  
+  .footer-logo img {
+    width: 160px;
+    height: 150px;
+}
+  
+  .footer-bottom {
+    background-color: #7b41bd;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    margin-bottom: -30px;
+    margin-right: -20px;
+    margin-left: -20px;
+}
+  
+  .social-icons i {
+    margin: 0 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 13px;
+}
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+}
+a.ftr {
+    text-decoration: none;
+    color:#5E2CA5;
+  }
+  a.ftr:hover{
+    color:#2a0a57;
+  }
