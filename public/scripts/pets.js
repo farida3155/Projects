@@ -1,5 +1,5 @@
-// --- DATA: Provided by EJS ---
-let currentType = 'cat'; // start with cats
+
+let currentType = 'cat'; 
 let currentPets = cats;
 
 function getDisplayImagePath(image) {
@@ -12,7 +12,7 @@ function getDisplayImagePath(image) {
       return image.startsWith('/public/') ? image.replace(/^\/public/, '') : image;
     }
   }
-// --- RENDER FLIP CARDS ---
+
 function createFlipCard(pet) {
   return `
     <div class="flip-card">
@@ -28,7 +28,8 @@ function createFlipCard(pet) {
           <p><b>Gender:</b> ${pet.gender}</p>
           <p><b>Neutered:</b> ${pet.neutered}</p>
           <p><b>Location:</b> ${pet.location}</p>
-          <button id="adopt-btn" onclick="openAdoptionForm('${pet._id}')">Adopt</button>
+         <button onclick="openAdoptionForm('${pet._id}')">Adopt</button>
+
         </div>
       </div>
     </div>
@@ -45,7 +46,7 @@ function renderPetCards(pets) {
   container.innerHTML = pets.map(createFlipCard).join('');
 }
 
-// --- TABS: Cat / Dog ---
+
 document.getElementById('catTab').addEventListener('click', function() {
   currentType = 'cat';
   currentPets = cats;
@@ -63,7 +64,7 @@ document.getElementById('dogTab').addEventListener('click', function() {
   updateFilters();
 });
 
-// --- FILTERS ---
+
 document.getElementById('filter-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const gender = this.gender.value;
@@ -83,21 +84,21 @@ document.getElementById('filter-form').addEventListener('submit', function(e) {
   renderPetCards(filtered);
 });
 
-// --- UPDATE BREED/LOCATION FILTERS WHEN PET TYPE CHANGES ---
+
 function updateFilters() {
-  // Breeds
+
   const breedSelect = document.getElementById('breed');
   breedSelect.innerHTML = `<option value="">Any</option>` + breedsByType[currentType].map(b => `<option value="${b}">${b}</option>`).join('');
-  // Locations
+
   const locSelect = document.getElementById('location');
   locSelect.innerHTML = `<option value="">Any</option>` + locationsByType[currentType].map(l => `<option value="${l}">${l}</option>`).join('');
 }
 
-// Adoption form modal logic
-function openAdoptionForm() {
-    const modal = document.getElementById("adoption-form");
-    if (modal) modal.style.display = "block";
-  }
+function openAdoptionForm(petId) {
+  localStorage.setItem("selectedPetId", petId); // Save to use on the form page
+  window.location.href = "adoptionForm.html";
+}
+
   
   function closeAdoptionForm() {
     const modal = document.getElementById("adoption-form");
@@ -110,13 +111,13 @@ function openAdoptionForm() {
       adoptionModal.style.display = "none";
     }
   };
-// --- INITIALIZE PAGE ---
+
 renderPetCards(cats);
 updateFilters();
 
-// Clear Filters
+
 document.getElementById('clearFiltersBtn').addEventListener('click', function() {
-    // Reset all filter fields
+ 
     document.getElementById('gender').value = "";
     document.getElementById('age').value = "";
     document.getElementById('age-unit').value = "years";
@@ -124,11 +125,32 @@ document.getElementById('clearFiltersBtn').addEventListener('click', function() 
     document.getElementById('neutered').value = "";
     document.getElementById('location').value = "";
   
-    // Re-render all pets for the current type
+   
     if (currentType === 'cat') {
       renderPetCards(cats);
     } else {
       renderPetCards(dogs);
     }
   });
-  
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // example check
+
+  function toggleSidebar() {
+    document.getElementById("profileSidebar").classList.toggle("open");
+    document.getElementById("sidebarOverlay").classList.toggle("active");
+  }
+
+  function handleProfileClick() {
+    if (!isLoggedIn) {
+      window.location.href = "/login"; // already implemented by you
+    } else {
+      toggleSidebar();
+    }
+  }
+
+  // Hide login/signup text if logged in
+  document.addEventListener("DOMContentLoaded", () => {
+    if (isLoggedIn) {
+      const loginSignupText = document.getElementById("loginSignupText");
+      if (loginSignupText) loginSignupText.style.display = "none";
+    }
+  });

@@ -5,7 +5,7 @@ document.getElementById("darkModeToggle").addEventListener("click", function () 
   document.body.classList.toggle("dark-mode");
 });
 
-// Alternate filter form logic (if used)
+//Filtering
 const altForm = document.getElementById("filter-form");
 if(altForm) {
   altForm.addEventListener("submit", function (event) {
@@ -52,7 +52,7 @@ if(altForm) {
   });
 }
 
-// Render filtered pets to container (if used)
+// Render filtered pets 
 function renderFilteredPets(filteredPets) {
   const container = document.getElementById("petListingsContainer");
   if (!container) return;
@@ -84,7 +84,11 @@ function renderFilteredPets(filteredPets) {
     const adoptButton = document.createElement("button");
     adoptButton.className = "adopt-btn";
     adoptButton.textContent = "Adopt Me";
-    adoptButton.addEventListener("click", () => openAdoptionForm(pet));
+    adoptButton.addEventListener("click", () => {
+      localStorage.setItem("selectedPetName", pet.name); // store it
+      window.location.href = "/adoptionForm.html"; // go to form
+    });
+       
     petCard.appendChild(adoptButton);
 
     container.appendChild(petCard);
@@ -93,25 +97,9 @@ function renderFilteredPets(filteredPets) {
 
 
 
-// Adoption form modal logic
-function openAdoptionForm() {
-  const modal = document.getElementById("adoption-form");
-  if (modal) modal.style.display = "block";
-}
 
-function closeAdoptionForm() {
-  const modal = document.getElementById("adoption-form");
-  if (modal) modal.style.display = "none";
-}
 
-window.onclick = function (event) {
-  const adoptionModal = document.getElementById("adoption-form");
-  if (event.target === adoptionModal) {
-    adoptionModal.style.display = "none";
-  }
-};
-
-// Quiz questions and structure
+// Quiz
 const quizData = [
   {
     question: "Do you enjoy outdoor activities?",
@@ -175,7 +163,7 @@ const quizData = [
   }
 ];
 
-// Quiz state
+
 let userAnswers = [];
 let currentSlide = 0;
 
@@ -199,7 +187,7 @@ function createQuizSlides() {
     container.appendChild(slide);
   });
 
-  // Result slide (last)
+ 
   const resultSlide = document.createElement('div');
   resultSlide.className = 'quiz-slide';
   resultSlide.setAttribute('data-slide', quizData.length);
@@ -212,7 +200,7 @@ function createQuizSlides() {
   container.appendChild(resultSlide);
 }
 
-// Show the given slide (by index)
+
 function showQuizSlide(index, tossDirection = null) {
   const slides = document.querySelectorAll('.quiz-slide');
   slides.forEach((slide, i) => {
@@ -226,33 +214,32 @@ function showQuizSlide(index, tossDirection = null) {
   currentSlide = index;
 }
 
-// Handle answer selection and transition
+
 function handleQuizAnswer(e) {
   const btn = e.target.closest('.quiz-answer-btn');
   if (!btn) return;
   const answer = btn.dataset.answer;
   const slideIndex = parseInt(btn.dataset.slide);
 
-  // Mark selected button
+
   btn.classList.add('selected');
   btn.parentElement.querySelectorAll('.quiz-answer-btn').forEach(b => {
     if (b !== btn) b.classList.remove('selected');
   });
 
-  // Save answer
+
   userAnswers[slideIndex] = answer;
 
-  // Transition: toss current slide to left, show next
+
   setTimeout(() => {
     showQuizSlide(slideIndex + 1, 'left');
-    // If on result slide, calculate and show result
+ 
     if (slideIndex + 1 === quizData.length) {
       showQuizResult();
     }
   }, 350);
 }
 
-// Calculate and display result
 function showQuizResult() {
   let catScore = 0, dogScore = 0;
   userAnswers.forEach((ans, i) => {
@@ -283,9 +270,9 @@ function showQuizResult() {
   `;
 }
 
-// Quiz modal open/close logic
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Quiz modal open
+
   const openQuizBtn = document.getElementById('openQuizBtn');
   if (openQuizBtn) {
     openQuizBtn.addEventListener('click', function() {
@@ -297,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = 'hidden';
     });
   }
-  // Quiz modal close
+ 
   const closeQuizModal = document.getElementById('closeQuizModal');
   if (closeQuizModal) {
     closeQuizModal.addEventListener('click', function() {
@@ -305,12 +292,12 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     });
   }
-  // Slide answer delegation
+ 
   const quizSlidesContainer = document.getElementById('quizSlidesContainer');
   if (quizSlidesContainer) {
     quizSlidesContainer.addEventListener('click', handleQuizAnswer);
   }
-  // Dismiss quiz modal on outside click
+ 
   const quizModalQ = document.getElementById('quizModalQ');
   if (quizModalQ) {
     quizModalQ.addEventListener('mousedown', function(e) {
@@ -322,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Restart quiz from result slide
+
 function restartQuiz() {
   userAnswers = [];
   currentSlide = 0;
@@ -330,9 +317,9 @@ function restartQuiz() {
   showQuizSlide(0);
 }
 
-// --- REHOME PET MODAL CODE ---
+// Rehome Pet Modal
 document.addEventListener('DOMContentLoaded', function() {
-  // Open Rehome Modal
+  
   const openRehomeBtn = document.getElementById('openRehomeBtn');
   const rehomeModal = document.getElementById('rehomePetModal');
   const closeRehomeModal = document.getElementById('closeRehomeModal');
@@ -349,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.body.style.overflow = '';
     });
   }
-  // Dismiss modal on outside click
+
   if (rehomeModal) {
     rehomeModal.addEventListener('mousedown', function(e) {
       if (e.target === rehomeModal) {
@@ -359,15 +346,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-//REHOME FORM LOGIC
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Toggle medication field visibility
+ 
   document.getElementById('petDisease').addEventListener('change', function() {
     document.getElementById('medicationSection').style.display = 
       this.value === 'Yes' ? 'block' : 'none';
   });
 
-  // File upload counter
+  
   document.getElementById('petPhotos').addEventListener('change', function() {
     const count = this.files.length;
     document.getElementById('fileCountMsg').textContent = 
@@ -380,11 +367,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = e.target.querySelector('button[type="submit"]');
     
     try {
-      // Disable button during submission
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
       
-      // Send form data to the correct endpoint
+
       const response = await fetch('/api/post-requests', {
         method: 'POST',
         body: formData
@@ -395,13 +382,13 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error(errorData.message || 'Submission failed');
       }
   
-      // Success handling
+   
       const result = await response.json();
       console.log('Submission successful:', result);
       
       showToast("Thank you for your request! We’ve received your submission and our team will review it soon.");
       
-      // Reset form and UI
+
       this.reset();
       document.getElementById('fileCountMsg').textContent = '';
       document.getElementById('rehomePetModal').style.display = 'none';
@@ -410,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Submission error:', error);
       alert(`Error: ${error.message}`);
     } finally {
-      // Re-enable button
+    
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit for Adoption';
     }
@@ -422,5 +409,29 @@ function showToast(message) {
   toast.className = "toast show";
   setTimeout(() => {
     toast.className = "toast";
-  }, 3000); // Toast disappears after 3 seconds
+  }, 3000); 
 }
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // example check
+
+  function toggleSidebar() {
+    document.getElementById("profileSidebar").classList.toggle("open");
+    document.getElementById("sidebarOverlay").classList.toggle("active");
+  }
+
+  function handleProfileClick() {
+    if (!isLoggedIn) {
+      window.location.href = "/login"; // already implemented by you
+    } else {
+      toggleSidebar();
+    }
+  }
+
+  // Hide login/signup text if logged in
+  document.addEventListener("DOMContentLoaded", () => {
+    if (isLoggedIn) {
+      const loginSignupText = document.getElementById("loginSignupText");
+      if (loginSignupText) loginSignupText.style.display = "none";
+    }
+  });
+
