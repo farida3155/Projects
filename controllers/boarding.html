@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETCO - Boarding</title>
+    <link rel="stylesheet" href="/styles/boarding.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+    <header>
+    <div class="nav">
+        <div class="logo-container">
+            <a href='index.html'>  <img src="/images/logo.png" alt="Logo" class="logo"> </a>
+        </div>
+  
+        <a class="text" href="index.html">Home</a>
+        <a class="text" href="adoptPage.html" >Adopt</a>
+        <a class="active" href="petGuide1.html">Pet Guide</a>
+        <a class="text" href="donations.html" >Donate</a>
+        <div id="login">
+            <a href="login.html">
+                <img id='loginicon' src="/images/profile.png">
+            </a>
+            <a class="text" href="login.html" >Login/Signup
+            </a>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="page-header">
+        <h1>Boarding & Training Centers</h1>
+    </div>
+      
+    <h2 class="section-title">Boarding</h2>
+      
+    <div class="card-container">
+        <div class="center-card">
+          
+          <h2>Shanti Dog Center</h3>
+          <p>4.8 rating</p>
+          <p class="address">Address: Al Matar, El Nozha, Cairo Governorate 4470631</p>
+          <a href="tel:+1234567890" class="call-link">Call Now!</a>
+        </div>
+
+        <div class="center-card">
+            <h2>New Cairo Pet Care Center
+            </h2>
+            <p>4.0 rating</p>
+            <p class="address">Address: 2CVH+5X، التحرير, street, Second New Cairo, Cairo Governorate 11865</p>
+            <a href="tel:+1234567890" class="call-link">Call Now!</a>
+
+
+        </div>
+
+        <div class="center-card">
+            
+            
+            <h2>We Woof Dogs
+            </h2>
+            <p>4.9 rating</p>
+            <p class="address">Address: Maadi as Sarayat Al Gharbeyah, Maadi, Cairo Governorate 4213004</p>
+            <a href="tel:+1234567890" class="call-link">Call Now!</a>
+
+
+        </div>
+
+
+        <div class="center-card">
+            <h2>The Dog father
+            </h2>
+            <p>4.2 rating</p>
+            <p class="address">Address: كنتري كلوب, Attia khattab Attia khattab المريوطيه - بجانب الريف العربي و, Giza Governorate </p>
+            <a href="tel:+1234567890" class="call-link">Call Now!</a>
+
+
+        </div>
+
+
+        
+        <div class="center-card">
+            <h2>Just Like Home Center
+            </h2>
+            <p>4.2 rating</p>
+            <p class="address">Address: الشيخ/ ماء العين, New Cairo 1, Cairo Governorate 4734113 </p>
+            <a href="tel:+1234567890" class="call-link">Call Now!</a>
+
+
+        </div>
+
+
+        <div class="center-card">
+            <h2>Eastwind
+            </h2>
+            <p>4.7 rating</p>
+            <p class="address">Address: Hyde Park, 1, New Cairo 1, Cairo Governorate 4762020</p>
+            <a href="tel:+1234567890" class="call-link">Call Now!</a>
+
+
+        </div>
+
+
+
+        
+
+        
+        
+    
+    </div>
+
+
+
+<a href="contact.html" class="contact-float" title="Contact Us">
+  <i class="fas fa-phone-alt"></i>
+  <span>Contact Us</span>
+</a>
+
+
+   <!-- Profile Sidebar -->
+<div id="profileSidebar" class="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">×</button>
+  <h2>Welcome, <span id="username">User</span></h2>
+  <ul>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="/adoptions">My Adoptions</a></li>
+    <li><a href="/settings">Settings</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</div>
+
+<!-- Overlay -->
+<div id="sidebarOverlay" class="overlay" onclick="toggleSidebar()"></div>
+   
+
+
+</body>
+<footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <a href="petGuide1.html" class="ftr"><h4>Your Guide</h4></a>
+        <a href="petGuide2.html" class="ftr-bottom"><p>Information about all breeds</p></a>
+        <a href="boarding.html" class="ftr-bottom"><p>Training & boarding Places</p></a>
+        <a href="petEssential.html" class="ftr-bottom"><p>Pet Supplies</p></a>
+      </div>
+      <div class="footer-column">
+        <a href="homePage.html" class="ftr"><h4>Home</h4></a>
+        <p>News</p>
+        <p>About us</p>
+        <p>Events</p>
+      </div>
+      <div class="footer-column">
+        <a href="adoptPage.html" class="ftr"><h4>Adopt</h4></a>
+        <p>Quiz</p>
+        <p>Dog Section</p>
+        <p>Cat Section</p>
+      </div>
+      <div class="footer-column">
+        <a href="donations.html" class="ftr"><h4>Donate</h4></a>
+        <p>Payment Plans/Package</p>
+        <p>Donate</p>
+      </div>
+      <div class="footer-logo">
+        <img src="/images/favicon.ico" alt="Petco Logo" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <div class="footer-links">
+        <a href="#">Terms of Service</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</html>
