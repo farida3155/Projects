@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="styles/dashboard.css"> 
+  <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+  <div class="header">
+    <div class="side-nav">
+      <div class="user">
+        <img src="/images/user.png" class="user-img">
+        <div class="user-details">
+          <!-- Username and role will be inserted here -->
+          <span id="adminUsername" style="display:block;font-weight:bold;"></span>
+          <span id="adminEmail" style="font-size:0.95em;color:#a57ad9;"></span>
+          <span id="adminRole" style="font-size:0.9em;color:#888;"></span>
+        </div>
+      </div>
+      <ul>
+        <li><img src="/images/dashboard.png"><a href="AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="managePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="postRequest.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="DonationForm.html"><p>Donations</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="Insights.html"><p>Insights</p></a></li>
+        <li><img src="/images/events.png"><a href="adminevents.html"><p>Events</p></a></li>
+        <li><img src="/images/admin.png"><a href="manageAdmins.html"><p>Manage Admins</p></a></li>
+       </ul>
+    </div>
+  </div>
+
+  <div class="main-dashboard">
+    <div class="dashboard-navbar">
+      <img src="/images/logo.png" alt="Petco Logo" class="dashboard-logo"/>
+      <h1>Admin Dashboard</h1>
+    </div>
+    <hr>
+
+    <div id="main-content">
+    <div class="stats-card">
+      <div class="stat-card">
+        <h2>New Boarding</h2>
+        <p id="boardingCount">...</p>
+        <span class="green">+15</span>
+      </div>
+      <div class="stat-card">
+        <h2>Active Users</h2>
+        <p id="activeUsers">....</p>
+        <span class="red">-90</span>
+      </div>
+      <div class="stat-card">
+        <h2>Total Revenue</h2>
+        <p id="revenue">....</p>
+        <span class="green">+1000</span>
+      </div>
+    </div>
+
+    <div class="graph-box" onclick="goTo('insights.html')">
+      <h3>Adoption Requests</h3>
+      <canvas id="adoptionChart"></canvas>
+    </div>
+
+    <div class="summary-widgets">
+      <div onclick="goTo('AdoptionReq.html')">
+        <h2 id="adoptCount">120++</h2>
+        <p>Adopt Request <br> are pending</p>
+        <a href="#">view</a>
+      </div>
+      <div onclick="goTo('managePets.html')">
+        <h2 id="petsCount">45</h2>
+        <p>Pets <br> On board</p>
+        <a href="#">view</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script src="scripts/authGuard.js"></script>
+  <script src="scripts/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
+</body>
+</html>

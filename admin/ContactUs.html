@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us Requests</title>
+  <link rel="stylesheet" href="/admin/styles/contactus.css" />
+</head>
+<body>
+  <div class="header">
+    <div class="side-nav">
+      <div class="user">
+        <img src="/images/user.png" class="user-img">
+        <div class="user-details">
+          <!-- Username and role will be inserted here -->
+          <span id="adminUsername" style="display:block;font-weight:bold;"></span>
+          <span id="adminEmail" style="font-size:0.95em;color:#a57ad9;"></span>
+          <span id="adminRole" style="font-size:0.9em;color:#888;"></span>
+        </div>
+      </div>
+      <ul>
+        <li><img src="/images/dashboard.png"><a href="AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="managePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="postRequest.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="DonationForm.html"><p>Donations</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="Insights.html"><p>Insights</p></a></li>
+        <li><img src="/images/events.png"><a href="adminevents.html"><p>Events</p></a></li>
+        <li><img src="/images/admin.png"><a href="manageAdmins.html"><p>Manage Admins</p></a></li>
+       </ul>
+    </div>
+  </div>
+
+  <div class="main-dashboard">
+    <div class="dashboard-navbar">
+      <img src="/images/logo.png" alt="Petco Logo" class="dashboard-logo"/>
+      <h1>Contact Requests</h1>
+    </div>
+
+    <hr>
+
+    <div id="main-content">
+      <h1>Contact Us Requests</h1>
+      <div class="contacts-container" id="contactsContainer">
+        <!-- Contact cards will be loaded here -->
+      </div>
+
+      <!-- Modal for details -->
+      <div class="modal" id="contactModal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Contact Details</h2>
+          <p><strong>Name:</strong> <span id="modalName"></span></p>
+          <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+          <p><strong>Subject:</strong> <span id="modalSubject"></span></p>
+          <p><strong>Message:</strong></p>
+          <p id="modalMessage"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="scripts/authGuard.js"></script>
+  <script src="/admin/scripts/contactus.js"></script>
+
+</body>
+</html>
