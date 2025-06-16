@@ -13,7 +13,7 @@ exports.getPets = async (req, res) => {
     if (breed) filter.breed = breed;
     if (neutered) filter.neutered = neutered;
     if (location) filter.location = location;
-    if (type) filter.type = type; // "cat" or "dog"
+    if (type) filter.type = type; 
     try {
         const petList = await Pet.find(filter).select('name age breed gender neutered location image type');
         res.status(200).send(petList);
