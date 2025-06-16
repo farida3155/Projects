@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adopt | Petco</title>
+  <link rel="stylesheet" href="/styles/pets.css">
+</head>
+<body class="pbody">
+  
+  <div class="nav">
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="/images/logo.png" alt="Logo" class="logo">
+        </a>
+    </div>
+    <a class="text" href="index.html">Home</a>
+    <a class="active" href="adoptPage.html">Adopt</a>
+    
+    <a class="text" href="petGuide1.html">Pet Guide</a>
+    <a class="text" href="donations.html">Donate</a>
+    <div id="login">
+        <a href="login.html">
+            <img id="loginicon" src="/images/profile.png">
+        </a>
+        <a class="text" href="login.html">Login/Signup</a>
+    </div>
+</div>
+<div class="type-tabs">
+  <button id="catTab" class="tab-btn active">
+    <!-- Animated Cat SVG -->
+    <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+      <!-- Ears -->
+      <polygon points="14,18 8,3 20,11" fill="#FBBF77">
+        <animateTransform attributeName="transform" type="rotate" values="0 14 18; 15 14 18; 0 14 18" dur="1.5s" repeatCount="indefinite"/>
+      </polygon>
+      <polygon points="50,18 56,3 44,11" fill="#FBBF77">
+        <animateTransform attributeName="transform" type="rotate" values="0 50 18; -15 50 18; 0 50 18" dur="1.5s" repeatCount="indefinite"/>
+      </polygon>
+      <!-- Face -->
+      <ellipse cx="32" cy="32" rx="20" ry="18" fill="#FBBF77"/>
+      <!-- Eyes -->
+      <ellipse cx="24" cy="36" rx="3" ry="5" fill="#333">
+        <animate attributeName="ry" values="5;1;5" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="40" cy="36" rx="3" ry="5" fill="#333">
+        <animate attributeName="ry" values="5;1;5" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- Nose -->
+      <ellipse cx="32" cy="44" rx="2" ry="1.5" fill="#E07A5F"/>
+      <!-- Whiskers -->
+      <line x1="10" y1="44" x2="22" y2="44" stroke="#333" stroke-width="2"/>
+      <line x1="10" y1="47" x2="22" y2="46" stroke="#333" stroke-width="2"/>
+      <line x1="54" y1="44" x2="42" y2="44" stroke="#333" stroke-width="2"/>
+      <line x1="54" y1="47" x2="42" y2="46" stroke="#333" stroke-width="2"/>
+    </svg>
+    Cats
+  </button>
+  <button id="dogTab" class="tab-btn">
+    <!-- Animated Dog SVG -->
+    <svg width="40" height="40" viewBox="0 0 64 64">
+      <!-- Ears -->
+      <ellipse cx="11" cy="20" rx="7" ry="14" fill="#A1887F">
+        <animateTransform attributeName="transform" type="rotate" values="0 11 20; 10 11 20; 0 11 20" dur="1.5s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="53" cy="20" rx="7" ry="14" fill="#A1887F">
+        <animateTransform attributeName="transform" type="rotate" values="0 53 20; -10 53 20; 0 53 20" dur="1.5s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- Face -->
+      <ellipse cx="32" cy="36" rx="20" ry="18" fill="#E0B090"/>
+      <!-- Eyes -->
+      <ellipse cx="24" cy="40" rx="3" ry="5" fill="#222">
+        <animate attributeName="ry" values="5;1;5" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="40" cy="40" rx="3" ry="5" fill="#222">
+        <animate attributeName="ry" values="5;1;5" dur="2s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- Nose -->
+      <ellipse cx="32" cy="48" rx="3" ry="2" fill="#333"/>
+      <!-- Smile -->
+      <path d="M28 52 Q32 56 36 52" stroke="#333" stroke-width="2" fill="none"/>
+      <!-- Tongue (animated drop) -->
+      <ellipse cx="32" cy="56" rx="2" ry="3" fill="#F77">
+        <animate attributeName="cy" values="56;59;56" dur="1.2s" repeatCount="indefinite"/>
+      </ellipse>
+    </svg>
+    Dogs
+  </button>
+</div>
+
+
+  <div class="filter-wrapper">
+    <form id="filter-form" class="filter-section">
+      <div class="filter-container">
+        <div class="filter-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender">
+            <option value="">Any</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" min="0" max="20" placeholder="Age">
+          <select id="age-unit" name="ageUnit">
+            <option value="years">Years</option>
+            <option value="months">Months</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="breed">Breed:</label>
+          <select id="breed" name="breed">
+            <option value="">Any</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="neutered">Neutered:</label>
+          <select id="neutered" name="neutered">
+            <option value="">Any</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="location">Location:</label>
+          <select id="location" name="location">
+            <option value="">Any</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-buttons">
+        <button type="submit">Apply Filters</button>
+        <button type="submit" id="clearFiltersBtn">Clear Filters</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="pet-cards-container" id="petCardsContainer" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;"></div>
+
+
+
+<button id="darkModeToggle">
+  <span class="icon">🌙</span>
+</button>
+<script>
+  
+    const cats = <%- JSON.stringify(cats) %>;
+    const dogs = <%- JSON.stringify(dogs) %>;
+    const breedsByType = {
+      cat: <%- JSON.stringify(catBreeds) %>,
+      dog: <%- JSON.stringify(dogBreeds) %>
+    };
+    const locationsByType = {
+      cat: <%- JSON.stringify(catLocations) %>,
+      dog: <%- JSON.stringify(dogLocations) %>
+    };
+
+    window.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const animal = params.get('animal');
+    if (animal === 'cat') {
+        document.getElementById('catTab').click();
+    } else if (animal === 'dog') { 
+        document.getElementById('dogTab').click();
+    }
+});
+/*Dark Mode*/
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    
+  
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+    }
+});
+
+
+if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+}
+  </script>
+
+  <script src="/scripts/pets.js"></script>
+</body>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <a href="petGuide1.html" class="ftr"><h4>Your Guide</h4></a>
+      <p>Information about all breeds</p>
+      <p>Training & boarding Places</p>
+      <p>Pet Supplies</p>
+    </div>
+    <div class="footer-column">
+      <a href="index.html" class="ftr"><h4>Home</h4></a>
+      <p>News</p>
+      <p>About us</p>
+      <p>Events</p>
+    </div>
+    <div class="footer-column">
+      <a href="adoptPage.html" class="ftr"><h4>Adopt</h4></a>
+      <p>Quiz</p>
+      <p>Dog Section</p>
+      <p>Cat Section</p>
+    </div>
+    <div class="footer-column">
+      <a href="donations.html" class="ftr"><h4>Donate</h4></a>
+      <p>Payment Plans/Package</p>
+      <p>Donate</p>
+    </div>
+    <div class="footer-logo">
+      <img src="/images/favicon.ico" alt="Petco Logo" />
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="social-icons">
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  </footer>
+</html>

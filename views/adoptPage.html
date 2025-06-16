@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petco Adoption</title>
+    <link rel="stylesheet" href="/styles/adoptPage.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+<body class="abody">
+    <div class="nav">
+        <div class="logo-container">
+            <a href='index.html'>  <img src="/images/logo.png" alt="Logo" class="logo"> </a>
+        </div>
+        <a class="text" href="index.html">Home</a>
+        <a class="active" href="adoptPage.html" >Adopt</a>  
+        <a class="text" href="petGuide1.html" >Pet Guide</a>
+        <a class="text" href="donations.html">Donate</a>
+        <div id="login">
+            <a href="login.html" onclick="handleProfileClick()">
+                <img id='loginicon' src="/images/profile.png" >
+            </a>
+        </div>
+    </div>
+
+    <div class="outer-container">
+      <!-- HERO --> 
+      <div class="hero-section">
+        <div class="hero-left">
+          <div class="hero-text">
+            <div class="star" aria-label="decorative star" style="font-size:52px;">&#10022;</div>
+            <h1>WANT TO FIND OUT <br> WHICH COMPANION SUITS YOU BEST?</h1>
+            <div class="openQuizBtn-wrapper">
+              <button id="openQuizBtn">TAKE THE QUIZ NOW!</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="/images/pawhand.png">
+        </div>
+      </div>
+      <div class="tags-bar">
+        <h2>ADOPT, DON'T SHOP!</h2>
+      </div>
+      <!-- PETS-->
+      
+      <div class="pets-section">
+        <div class="pet-card">
+          <h2>CATS</h2>
+          <img src="/images/cat.jpeg">
+         
+          <a href="loading.html?target=/adopt?animal=cat" class="explore-btn" style="color: white; text-decoration: none;">
+          <button class="explore">
+            EXPLORE
+          </button>
+        </a>
+        </div>
+        <div class="pet-card">
+          <h2>DOGS</h2>
+          <img src="/images/dog.jpeg">
+          <a href="loading.html?target=/adopt?animal=dog" style="color: white; text-decoration: none; ">
+          <button class="explore">
+            EXPLORE
+          </button></a>
+        </div>
+      </div>
+      <h2>Want to help your pet find a new family?</h2>
+        <div class="pet-card" id="uploadpet">
+          <img src="/images/uploadpet.jpeg">  
+          <button class="explore" id="openRehomeBtn">
+            REHOME MY PET
+          </button>
+          </div>
+    </div>
+<!-- Rehome My Pet  -->
+<div id="rehomePetModal" class="rehome-modal">
+  <div class="rehome-modal-content">
+    <span class="rehome-modal-close" id="closeRehomeModal">&times;</span>
+    <h2 class="rehome-modal-title">Rehome Your Pet</h2>
+    <form id="rehomePetForm" enctype="multipart/form-data" autocomplete="off">
+             <div class="rehome-section">
+        <label class="rehome-label">Upload up to 5 photos of your pet (JPG, JPEG, PNG):</label>
+        <input 
+          type="file" 
+          id="petPhotos" 
+          name="petPhotos" 
+          accept="image/jpeg, image/png, image/jpg" 
+          multiple 
+          required 
+          class="rehome-input"
+        >
+        <div id="fileCountMsg" class="rehome-file-msg"></div>
+      </div>
+
+      
+      <div class="rehome-section">
+        <label class="rehome-label">Pet Name:</label>
+        <input type="text" name="name" required class="rehome-input">
+
+      
+        <label class="rehome-label">Age:</label>
+        <div class="age-input-group">
+          <input 
+            type="number" 
+            name="ageValue" 
+            placeholder="e.g. 2" 
+            min="0" 
+            max="30" 
+            required 
+            class="rehome-input age-value"
+          >
+          <select 
+            name="ageUnit" 
+            required 
+            class="rehome-input age-unit"
+          >
+            <option value="">Unit</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+          </select>
+        </div>
+        
+        <label class="rehome-label">Gender:</label>
+        <select name="gender" required class="rehome-input">
+          <option value="">Select...</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+
+        <label class="rehome-label">Neutered:</label>
+        <select name="neutered" required class="rehome-input">
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label class="rehome-label">Breed:</label>
+        <input type="text" name="breed" required class="rehome-input">
+
+        <label class="rehome-label">Species:</label>
+        <select name="type" required class="rehome-input">
+          <option value="">Select...</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+
+        <label class="rehome-label">Location:</label>
+        <input type="text" name="location" placeholder="e.g. Cairo" required class="rehome-input">
+        
+        <label class="rehome-label">Does your pet have any diseases?</label>
+        <select name="petDisease" id="petDisease" required class="rehome-input">
+          <option value="">Select...</option>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+
+        <div id="medicationSection" style="display:none;">
+          <label class="rehome-label">If yes, what medication is used?</label>
+          <input type="text" name="petMedication" class="rehome-input">
+        </div>
+      </div>
+
+     
+      <div class="rehome-section">
+        <label class="rehome-label">Your Name:</label>
+        <input type="text" name="ownerName" required class="rehome-input">
+
+        <label class="rehome-label">Phone Number:</label>
+        <input type="tel" name="ownerPhone" required pattern="^[0-9+\-\s]{7,}$" class="rehome-input">
+
+        <label class="rehome-label">Email Address:</label>
+        <input type="email" name="ownerEmail" required class="rehome-input">
+      </div>
+
+   
+      <div class="rehome-section">
+        <label class="rehome-label">Anything else we should know about your pet?</label>
+        <textarea name="petExtraInfo" class="rehome-input" rows="2" placeholder="e.g. favorite toys, habits, etc."></textarea>
+
+        <label class="rehome-label">What kind of home would you prefer for your pet?</label>
+        <textarea name="petHomePref" class="rehome-input" rows="2" placeholder="Optional"></textarea>
+
+        <label class="rehome-label">Is your pet good with children or other animals?</label>
+        <select name="petWithOthers" required class="rehome-input">
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Not sure">Not sure</option>
+        </select>
+      </div>
+
+      <button type="submit" class="rehome-submit-btn">Submit for Adoption</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="quizModalQ" class="quiz-modal">
+  <div class="quiz-modal-content">
+    <span id="closeQuizModal" class="quiz-close">&times;</span>
+    <div id="quizSlidesContainer" class="quiz-slides-container">
+    </div>
+  </div>
+</div>
+
+
+
+  
+<!-- Profile Sidebar -->
+<div id="profileSidebar" class="sidebar">
+  <button class="close-btn" onclick="toggleSidebar()">×</button>
+  <h2>Welcome, <span id="username">User</span></h2>
+  <ul>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="/adoptions">My Adoptions</a></li>
+    <li><a href="/settings">Settings</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</div>
+
+<!-- Overlay -->
+<div id="sidebarOverlay" class="overlay" onclick="toggleSidebar()"></div>
+
+<div id="toast" class="toast"></div>
+    <button id="darkModeToggle">🌙</button>
+
+<script src="/scripts/adoptpage.js"></script>
+
+</body>
+<footer class="footer">
+    <div class="footer-top">
+      <div class="footer-column">
+        <a href="petGuide1.html" class="ftr"><h4>Your Guide</h4></a>
+        <p>Information about all breeds</p>
+        <p>Training & boarding Places</p>
+        <p>Pet Supplies</p>
+      </div>
+      <div class="footer-column">
+        <a href="index.html" class="ftr"><h4>Home</h4></a>
+        <p>News</p>
+        <p>About us</p>
+        <p>Events</p>
+      </div>
+      <div class="footer-column">
+        <a href="adoptPage.html" class="ftr"><h4>Adopt</h4></a>
+        <p>Quiz</p>
+        <p>Dog Section</p>
+        <p>Cat Section</p>
+      </div>
+      <div class="footer-column">
+        <a href="donations.html" class="ftr"><h4>Donate</h4></a>
+        <p>Payment Plans/Package</p>
+        <p>Donate</p>
+      </div>
+      <div class="footer-logo">
+        <img src="/images/favicon.ico" alt="Petco Logo" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <div class="footer-links">
+        <a href="#">Terms of Service</a> |
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</html>
