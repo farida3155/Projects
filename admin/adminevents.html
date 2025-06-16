@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Events Management</title>
+  <link rel="stylesheet" href="styles/adminevents.css">
+</head>
+<body>
+  <div class="header">
+    <div class="side-nav">
+      <div class="user">
+        <img src="/images/user.png" class="user-img">
+        <div class="user-details">
+          <!-- Username and role will be inserted here -->
+          <span id="adminUsername" style="display:block;font-weight:bold;"></span>
+          <span id="adminEmail" style="font-size:0.95em;color:#a57ad9;"></span>
+          <span id="adminRole" style="font-size:0.9em;color:#888;"></span>
+        </div>
+      </div>
+      <ul>
+        <li><img src="/images/dashboard.png"><a href="AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="managePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="postRequest.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="DonationForm.html"><p>Donations</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="Insights.html"><p>Insights</p></a></li>
+        <li><img src="/images/events.png"><a href="adminevents.html"><p>Events</p></a></li>
+        <li><img src="/images/admin.png"><a href="manageAdmins.html"><p>Manage Admins</p></a></li>
+       </ul>
+    </div>
+  </div>
+    <div class="main-dashboard">
+      <div class="dashboard-navbar">
+        <img src="/images/logo.png" alt="Petco Logo" class="dashboard-logo"/>
+        <h1>Events</h1>
+      </div>
+      <hr>
+      <div id="event-controls-container">
+        <div id="event-controls">
+          <button id="add-event-btn">Add Event</button>
+          <button id="delete-event-btn">Delete Selected Event</button>
+        </div>
+      </div>
+      <div id="event-list"></div>
+      <form id="add-event-form" style="display:none;">
+        <h2>Add New Event</h2>
+        <input type="text" id="event-title" placeholder="Event Title" required>
+        <input type="text" id="event-date" placeholder="Date (e.g. 2025-11-03)" required>
+        <input type="text" id="event-month" placeholder="Month (e.g. November)" required>
+        <input type="text" id="event-time" placeholder="Time (e.g. 10AM – 1PM)" required>
+        <input type="text" id="event-img" placeholder="Image URL" required>
+        <textarea id="event-desc" placeholder="Event Description" required></textarea>
+        <button type="submit">Add Event</button>
+        <button type="button" id="cancel-add-event">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <script src="scripts/authGuard.js"></script>
+  <script src="scripts/adminevents.js"></script>
+ 
+</body>
+</html>
