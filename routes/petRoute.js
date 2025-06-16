@@ -8,7 +8,7 @@ const FILE_TYPE_MAP = {
     'image/jpg': 'jpg'
 };
 
-// Image upload config
+// Uploading images
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         const isValid = FILE_TYPE_MAP[file.mimetype];
@@ -26,25 +26,25 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// GET pets with filters (for API)
+// filter pets
 router.get('/', petController.getPets);
 
-// GET all pets (admin)
+// ADMIN display all pets
 router.get('/all', petController.getAllPets);
 
-// GET adopted pets (admin)
+// ADMIN display adopted pets by id
 router.get('/adopted', petController.getAdoptedPets);
 
-// POST new pet (with image upload)
+// Add new pet
 router.post('/', upload.single('image'), petController.createPet);
 
-// PUT update pet
+// Update pet
 router.put('/:id', upload.single('image'), petController.updatePet);
 
-// GET single pet by id
+// Get pet by id
 router.get('/:id', petController.getPetById);
 
-// DELETE pet by id
+// Delete pet by id
 router.delete('/:id', petController.deletePet);
 
 module.exports = router;
