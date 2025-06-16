@@ -4,35 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manage Pets</title>
-  <link rel="stylesheet" href="/admin/styles/dashboard.css">
-  <link rel="stylesheet" href="/admin/styles/managePets.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/managePets.css">
 </head>
 <body>
   <div class="header">
     <div class="side-nav">
       <div class="user">
         <img src="/images/user.png" class="user-img">
-        <div>
-          <h2> Youliana </h2>
-          <p>youliana@gmail.com</p>
+        <div class="user-details">
+          <!-- Username and role will be inserted here -->
+          <span id="adminUsername" style="display:block;font-weight:bold;"></span>
+          <span id="adminEmail" style="font-size:0.95em;color:#a57ad9;"></span>
+          <span id="adminRole" style="font-size:0.9em;color:#888;"></span>
         </div>
       </div>
       <ul>
-        <li><img src="/images/dashboard.png"><a href="/admin/AdminDash.html"><p>Dashboard</p></a></li>
-        <li class="active"><img src="/images/pawprint.png"><a href="/admin/managePets.html"><p>Manage Pets</p></a></li>
-        <li><img src="/images/quote-request.png"><a href="/admin/AdoptionReq.html"><p>Adoption Requests</p></a></li>
-        <li><img src="/images/projects.png"><a href="/admin/PostReq.html"><p>Post Request</p></a></li>
-        <li><img src="/images/history.png"><a href="#"><p>Adoption History</p></a></li>
-        <li><img src="/images/document.png"><a href="#"><p>Donation Form</p></a></li>
-        <li><img src="/images/phone-chat.png"><a href="/admin/ContactUs.html"><p>Contact Us</p></a></li>
-        <li><img src="/images/reports.png"><a href="#"><p>Insights</p></a></li>
-      </ul>
+        <li><img src="/images/dashboard.png"><a href="AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="managePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="postRequest.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="DonationForm.html"><p>Donations</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="Insights.html"><p>Insights</p></a></li>
+        <li><img src="/images/events.png"><a href="adminevents.html"><p>Events</p></a></li>
+        <li><img src="/images/admin.png"><a href="manageAdmins.html"><p>Manage Admins</p></a></li>
+       </ul>
     </div>
   </div>
 
   <div class="main-dashboard">
     <div class="dashboard-navbar">
-      <img src="/images/logo1.png" alt="Petco Logo" class="dashboard-logo"/>
+      <img src="/images/logo.png" alt="Petco Logo" class="dashboard-logo"/>
       <h1>Manage Pets</h1>
     </div>
     <hr>
@@ -47,7 +51,7 @@
       
       <div id="managepets-cards-container" class="pet-cards-container"></div>
       
-      <!-- Add/Edit Pet Modal -->
+      <!-- Add/Update Pet  -->
       <div id="petModal" class="modal-bg" style="display:none;">
         <div class="modal-content">
           <span class="modal-close" id="closePetModal">×</span>
@@ -55,7 +59,7 @@
         </div>
       </div>
       
-      <!-- Remove Pet Confirmation Modal -->
+      <!-- Remove Pet -->
       <div id="removeModal" class="modal-bg" style="display:none;">
         <div class="modal-content">
           <span class="modal-close" id="closeRemoveModal">×</span>
@@ -64,5 +68,6 @@
         </div>
       </div>
     </div>
+    <script src="scripts/authGuard.js"></script>
 <script src="scripts/adminDash.js"></script>
   </div>

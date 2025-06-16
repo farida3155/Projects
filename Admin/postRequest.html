@@ -12,27 +12,31 @@
     <div class="side-nav">
       <div class="user">
         <img src="/images/user.png" class="user-img">
-        <div>
-          <h2> Youliana </h2>
-          <p>youliana@gmail.com</p>
+        <div class="user-details">
+          <!-- Username and role will be inserted here -->
+          <span id="adminUsername" style="display:block;font-weight:bold;"></span>
+          <span id="adminEmail" style="font-size:0.95em;color:#a57ad9;"></span>
+          <span id="adminRole" style="font-size:0.9em;color:#888;"></span>
         </div>
       </div>
       <ul>
-        <li><img src="/images/dashboard.png"><a href="/admin/AdminDash.html"><p>Dashboard</p></a></li>
-        <li><img src="/images/pawprint.png"><a href="/admin/managePets.html"><p>Manage Pets</p></a></li>
-        <li><img src="/images/quote-request.png"><a href="/admin/AdoptionReq.html"><p>Adoption Requests</p></a></li>
-        <li class="active"><img src="/images/projects.png"><a href="/admin/postRequest.html"><p>Post Requests</p></a></li>
-        <li><img src="/images/history.png"><a href="#"><p>Adoption History</p></a></li>
-        <li><img src="/images/document.png"><a href="#"><p>Donation Form</p></a></li>
-        <li><img src="/images/phone-chat.png"><a href="/admin/ContactUs.html"><p>Contact Us</p></a></li>
-        <li><img src="/images/reports.png"><a href="#"><p>Insights</p></a></li>
-      </ul>
+        <li><img src="/images/dashboard.png"><a href="AdminDash.html"><p>Dashboard</p></a></li>
+        <li><img src="/images/pawprint.png"><a href="managePets.html"><p>Manage Pets</p></a></li>
+        <li><img src="/images/quote-request.png"><a href="AdoptionReq.html"><p>Adoption Requests</p></a></li>
+        <li><img src="/images/projects.png"><a href="postRequest.html"><p>Post Request</p></a></li>
+        <li><img src="/images/history.png"><a href="AdoptionHistory.html"><p>Adoption History</p></a></li>
+        <li><img src="/images/document.png"><a href="DonationForm.html"><p>Donations</p></a></li>
+        <li><img src="/images/phone-chat.png"><a href="ContactUs.html"><p>Contact Us</p></a></li>
+        <li><img src="/images/reports.png"><a href="Insights.html"><p>Insights</p></a></li>
+        <li><img src="/images/events.png"><a href="adminevents.html"><p>Events</p></a></li>
+        <li><img src="/images/admin.png"><a href="manageAdmins.html"><p>Manage Admins</p></a></li>
+       </ul>
     </div>
   </div>
 
   <div class="main-dashboard">
     <div class="dashboard-navbar">
-      <img src="/images/logo1.png" alt="Petco Logo" class="dashboard-logo"/>
+      <img src="/images/logo.png" alt="Petco Logo" class="dashboard-logo"/>
       <h1>Post Requests</h1>
     </div>
     <hr>
@@ -48,27 +52,12 @@
       </div>
       
       <div id="requestsList" class="requests-grid">
-        <!-- Sample request card (will be populated dynamically) -->
-        <div class="request-card" data-id="sample-id">
-          <div class="request-images">
-            <img src="/uploads/sample-pet.jpg" alt="Pet Image" onerror="this.src='/images/pawdefault.png'">
-          </div>
-          <div class="request-details">
-            <h3>Pet Name</h3>
-            <p><b>Breed:</b> <span>Golden Retriever</span></p>
-            <p><b>Type:</b> <span>Dog</span></p>
-            <p><b>Location:</b> <span>New York</span></p>
-            <p><b>Submitted:</b> <span>June 15, 2023</span></p>
-            <p><b>Status:</b> <span class="status-pending">Pending</span></p>
-            <div class="request-actions">
-              <button class="view-details">View Details</button>
-              <button class="approve-btn">Approve</button>
-              <button class="reject-btn">Reject</button>
-            </div>
-          </div>
-        </div>
+        <!-- postRequests.js -->
       </div>
     </div>
   </div>
+  <script src="scripts/authGuard.js"></script>
+  
+  <script src="scripts/postRequests.js"></script>
 </body>
 </html>
